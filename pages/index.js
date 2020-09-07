@@ -1,65 +1,44 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { Text, useColorMode, Box, Image } from '@chakra-ui/core';
+import NavBar from '../components/NavBar';
+
+const bgColor = { light: 'white', dark: 'gray.800' };
+const fgColor = { light: 'black', dark: 'white' };
 
 export default function Home() {
+  const { colorMode } = useColorMode();
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="App">
+      <NavBar />
+      <Box
+        height="100vh"
+        width="100%"
+        bg={bgColor[colorMode]}
+        color={fgColor[colorMode]}
+        backgroundSize="cover"
+        mb={-5}
+      >
+        <Box
+          width="85%"
+          height="auto"
+          bg={bgColor[colorMode]}
+          color={fgColor[colorMode]}
+          pt={5}
+          px={15}
+          mx="auto"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+          {colorMode === 'light' && (
+            <Image src="logo.svg" pb="10%" px="5%" width="90%" />
+          )}
+          {colorMode === 'dark' && (
+            <Image src="logo-dark.svg" pb="10%" px="5%" width="90%" />
+          )}
+          <Text fontWeight="normal">
+            This is what we have so far... not much but a lot of the background
+            set-up stuff is over with. Good first day.
+          </Text>
+          {/* Image Banner Here */}
+        </Box>
+      </Box>
     </div>
-  )
+  );
 }
