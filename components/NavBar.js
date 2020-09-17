@@ -29,6 +29,8 @@ const NavBar = () => {
       p={6}
       mx="auto"
     >
+
+
       <Box>
         <Link href="/" passHref>
           <Button as="a" variant="ghost" py={1} px="0.75rem"

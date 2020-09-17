@@ -8,7 +8,7 @@ const customTheme = {
     white: '#fff',
     gray: {
       50: '#f7fafc',
-      800: '#121212', // default background color for dark theme
+      900: '#1a202c',
     },
     brand: {
       900: '#1a365d',
@@ -19,7 +19,7 @@ const customTheme = {
   },
   fonts: {
     ...theme.fonts,
-    body: "Kumbh Sans', sans-serif",
+    body: `"Rubik",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"`,
     heading: 'Montserrat, serif',
   },
   fontSizes: {
@@ -35,9 +35,9 @@ const customTheme = {
     '6xl': '64px',
   },
   fontWeights: {
-    normal: 400,
-    medium: 500,
-    bold: 600,
+    normal: 300,
+    medium: 400,
+    bold: 500,
   },
 };
 

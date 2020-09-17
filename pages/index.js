@@ -1,14 +1,13 @@
-import { Text, useColorMode, Box, Image } from '@chakra-ui/core';
-import NavBar from '../components/NavBar';
+/* eslint-disable react/no-unescaped-entities */
+import { Heading, Box, useColorMode, Text } from '@chakra-ui/core';
 
 const bgColor = { light: 'white', dark: 'gray.800' };
 const fgColor = { light: 'black', dark: 'white' };
 
-export default function Home() {
+const Home = () => {
   const { colorMode } = useColorMode();
   return (
-    <div className="App">
-      <NavBar />
+    <>
       <Box
         height="100vh"
         width="100%"
@@ -26,19 +25,16 @@ export default function Home() {
           px={15}
           mx="auto"
         >
-          {colorMode === 'light' && (
-            <Image src="logo.svg" pb="10%" px="5%" width="90%" />
-          )}
-          {colorMode === 'dark' && (
-            <Image src="logo-dark.svg" pb="10%" px="5%" width="90%" />
-          )}
-          <Text fontWeight="normal">
-            This is what we have so far... not much but a lot of the background
-            set-up stuff is over with. Good first day.
-          </Text>
-          {/* Image Banner Here */}
+          <Heading as="h1" fontSize={['2.5rem', '3rem']}>
+            Off Topic
+          </Heading>
+          <br />
+          <Text fontSize={['1.25rem', '1.25rem']}>Here we come.</Text>
+          <br />
         </Box>
       </Box>
-    </div>
+    </>
   );
-}
+};
+
+export default Home;
