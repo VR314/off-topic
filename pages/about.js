@@ -24,7 +24,7 @@ const About = () => {
         mx="auto"
       >
         <Heading as="h1" mb={3}>
-          My name is Varoon.
+          Off Topic.
         </Heading>
         <Heading
           as="h3"
@@ -32,32 +32,10 @@ const About = () => {
           fontWeight="300"
           fontStyle="italic"
         >
-          If you don't know my name,&nbsp;you will soon.
+          Coming soon
         </Heading>
         <br />
         <hr />
-        <br />
-        <Text fontSize={['1.25rem', '1.175rem']}>
-          A small brown boy from American suburbia. Son of immigrants, pursuing
-          the modern American Dream. <i>El solo lobo;</i> self-taught from start
-          to finish. Standing on the shoulders of giants, looking out towards
-          the future.
-        </Text>
-        <br />
-        <Text fontSize={['1.25rem', '1.175rem']}>
-          Let's make this world (and other worlds!) better for humanity, so our
-          descendants live in awe of our generation. Let's do something that
-          makes us proud to be human.
-        </Text>
-        <br />
-        {/*
-        <Text fontSize={['1.25rem', '1.175rem']}>
-          {' '}
-          ideas in == ideas out. learning <span>
-            &#10230;
-          </span> manifestation.{' '}
-        </Text>
-        */}
       </Box>
     </Box>
   );
