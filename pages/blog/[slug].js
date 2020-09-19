@@ -9,6 +9,7 @@ import {
 import Link from 'next/link';
 import { GraphQLClient } from 'graphql-request';
 import ReactMarkdown from 'react-markdown';
+import React from 'react';
 
 const graphcms = new GraphQLClient(process.env.URL);
 
@@ -53,48 +54,87 @@ export async function getStaticPaths() {
   };
 }
 
+const renderers = {
+  heading: (props) => {
+    switch (props.level) {
+      case 1:
+        return (
+          <Heading as="h1" size="2xl">
+            {props.children}
+          </Heading>
+        );
+      case 2:
+        return (
+          <Heading as="h2" size="xl">
+            {props.children}
+          </Heading>
+        );
+      default:
+        return (
+          <Heading as="h3" size="lg">
+            {props.children}
+          </Heading>
+        );
+    }
+  },
+  paragraph: (props) => {
+    return (
+      <Text fontSize={['1rem', '1.25rem']} lineHeight="taller" pb="15px">
+        {props.children}
+      </Text>
+    );
+  },
+};
+
 const PostLayout = ({ post }) => {
   const { colorMode } = useColorMode();
   const bgColor = { light: 'white', dark: 'gray.800' };
   const fgColor = { light: 'black', dark: 'white' };
-  console.log(post.content)
+
   return (
-    <Box
-      height="100%"
-      width="100%"
-      bg={bgColor[colorMode]}
-      backgroundSize="cover"
-    >
+    <>
       <Box
-        width="85%"
+        height="100vh"
+        width="100%"
         bg={bgColor[colorMode]}
         color={fgColor[colorMode]}
-        pb={20}
-        pt={5}
-        px="auto"
-        mx="auto"
+        backgroundSize="cover"
+        mb={-5}
       >
-        <Heading as="h1" size="xl" mb={2}>
-          {post.title}
-        </Heading>
-        <Text fontSize="1rem" mb={2}>
-          {post.updatedAt}
-        </Text>
-        <Divider mb={3} />
-        <ReactMarkdown source={post.content.markdown} />
-        <Divider />
-        <Text fontSize="1.25rem">
-          Thanks for visiting, I hope you enjoyed!{' '}
-          <span>
-            <Link href="/blog" passHref>
-              <ChakraLink color="blue.200">
-                There is more where this came from!
-              </ChakraLink>
-            </Link>
-          </span>
-        </Text>
+        <Box
+          width="85%"
+          height="auto"
+          bg={bgColor[colorMode]}
+          color={fgColor[colorMode]}
+          pt={5}
+          px={15}
+          mx="auto"
+        >
+          <Heading as="h1" size="2xl" mb={2}>
+            {post.title}
+          </Heading>
+          <Text fontSize="1rem" mb={2}>
+            {post.updatedAt}
+          </Text>
+          <Divider mb={3} />
+          <ReactMarkdown renderers={renderers} source={post.content.markdown} />
+          {
+            //  use https://github.com/aknuds1/html-to-react#setup
+          }
+          <Divider />
+          <Text fontSize="1.25rem">
+            Thanks for visiting, I hope you enjoyed!{' '}
+            <span>
+              <Link href="/blog" passHref>
+                <ChakraLink color="blue.400">
+                  There is more where this came from!
+                </ChakraLink>
+              </Link>
+            </span>
+          </Text>
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 
