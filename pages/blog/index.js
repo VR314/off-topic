@@ -9,6 +9,7 @@ import {
   Tag,
   Link as ChakraLink,
   Divider,
+  Button,
 } from '@chakra-ui/core';
 import Link from 'next/link';
 import { GraphQLClient } from 'graphql-request';
@@ -21,12 +22,14 @@ const linkFG = { light: 'blue.500', dark: 'blue.200' };
 const BlogPost = (props) => {
   const { colorMode } = useColorMode();
   return (
-    <Box mb={12}>
-      <Heading as="h3" fontSize="28px" mb={-4}>
-        <Link href="/blog/[slug]" as={`/blog/${props.slug}`} passHref>
-          <ChakraLink color={[linkFG[colorMode]]}>{props.title}</ChakraLink>
-        </Link>
-      </Heading>
+    <Box mb={12} key={props.title}>
+      <Button variant="ghost" px={0} mb={2}>
+        <Heading as="h3" fontSize="28px">
+          <Link href="/blog/[slug]" as={`/blog/${props.slug}`} passHref>
+            <ChakraLink color={[linkFG[colorMode]]}>{props.title}</ChakraLink>
+          </Link>
+        </Heading>
+      </Button>
       <br />
       <Text fontSize={['16px', '20px']} mb={3}>
         {props.oneLiner} —{' '}
@@ -51,7 +54,7 @@ const Blog = ({ posts }) => {
   const { colorMode } = useColorMode();
   return (
     <Box
-      height="100%"
+      height="100vh"
       width="100%"
       bg={bgColor[colorMode]}
       color={fgColor[colorMode]}
@@ -66,10 +69,9 @@ const Blog = ({ posts }) => {
         px={15}
         mx="auto"
       >
-        <Heading as="h1" pb={5}>
-          Posts
-          <Divider />
-        </Heading>
+        <Heading as="h1">Posts</Heading>
+
+        <Divider mb={5} />
         {posts.map((post) => (
           <BlogPost
             key={post.title}

@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Heading, Box, useColorMode, Button, Text } from '@chakra-ui/core';
-import Link from 'next/link';
+import { Heading, Box, useColorMode, Divider } from '@chakra-ui/core';
 
 const bgColor = { light: 'white', dark: 'gray.800' };
 const fgColor = { light: 'black', dark: 'white' };
@@ -24,18 +23,9 @@ const About = () => {
         mx="auto"
       >
         <Heading as="h1" mb={3}>
-          Off Topic.
+          V&N.
         </Heading>
-        <Heading
-          as="h3"
-          fontSize={['1.5rem', '1.375rem']}
-          fontWeight="300"
-          fontStyle="italic"
-        >
-          Coming soon
-        </Heading>
-        <br />
-        <hr />
+        <Divider />
       </Box>
     </Box>
   );

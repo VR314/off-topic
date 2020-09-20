@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Heading, Box, useColorMode, Text } from '@chakra-ui/core';
+import { Heading, Box, useColorMode, Text, Divider } from '@chakra-ui/core';
 
 const bgColor = { light: 'white', dark: 'gray.800' };
 const fgColor = { light: 'black', dark: 'white' };
@@ -17,7 +17,7 @@ const Home = () => {
         mb={-5}
       >
         <Box
-          width="85%"
+          width="90%"
           height="auto"
           bg={bgColor[colorMode]}
           color={fgColor[colorMode]}
@@ -28,8 +28,9 @@ const Home = () => {
           <Heading as="h1" fontSize={['2.5rem', '3rem']}>
             Off Topic
           </Heading>
+          <Divider />
           <br />
-          <Text fontSize={['1.25rem', '1.25rem']}>Here we come.</Text>
+          <Text fontSize={['1.25rem', '1.25rem']}>Coming soon.</Text>
           <br />
         </Box>
       </Box>

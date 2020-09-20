@@ -78,10 +78,13 @@ const renderers = {
     }
   },
   paragraph: (props) => {
+    return <Text fontSize={['1rem', '1.25rem']}>{props.children}</Text>;
+  },
+  link: (props) => {
     return (
-      <Text fontSize={['1rem', '1.25rem']} lineHeight="taller" pb="15px">
-        {props.children}
-      </Text>
+      <Link href={props.href}>
+        <ChakraLink>{props.children}</ChakraLink>
+      </Link>
     );
   },
 };
@@ -123,14 +126,14 @@ const PostLayout = ({ post }) => {
           }
           <Divider />
           <Text fontSize="1.25rem">
-            Thanks for visiting, I hope you enjoyed!{' '}
-            <span>
-              <Link href="/blog" passHref>
-                <ChakraLink color="blue.400">
-                  There is more where this came from!
-                </ChakraLink>
-              </Link>
-            </span>
+            Thanks for visiting, we hope you enjoyed!{' '}
+          </Text>
+          <Text fontSize="1.25rem">
+            <Link href="/blog" passHref>
+              <ChakraLink color="blue.400">
+                There is more where this came from!
+              </ChakraLink>
+            </Link>
           </Text>
         </Box>
       </Box>
