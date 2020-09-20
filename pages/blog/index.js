@@ -88,7 +88,7 @@ const Blog = ({ posts }) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const graphcms = new GraphQLClient(process.env.URL);
 
   const { posts } = await graphcms.request(

@@ -13,7 +13,7 @@ import React from 'react';
 
 const graphcms = new GraphQLClient(process.env.URL);
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const { post } = await graphcms.request(
     `query PostPageQuery($slug: String!){
       post(where: {slug: $slug}) {
@@ -41,6 +41,7 @@ export async function getStaticProps(context) {
   };
 }
 
+/*
 export async function getStaticPaths() {
   const { posts } = await graphcms.request(`{
     posts {
@@ -53,6 +54,7 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+*/
 
 const renderers = {
   heading: (props) => {
