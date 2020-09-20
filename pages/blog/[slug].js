@@ -80,13 +80,18 @@ const renderers = {
     }
   },
   paragraph: (props) => {
-    return <Text fontSize={['1rem', '1.25rem']}>{props.children}</Text>;
+    return (
+      <>
+        <Text fontSize={['1rem', '1.25rem']}>{props.children}</Text>
+        <br />
+      </>
+    );
   },
   link: (props) => {
     return (
-      <Link href={props.href}>
-        <ChakraLink>{props.children}</ChakraLink>
-      </Link>
+      <a href={props.href}>
+        <ChakraLink color="blue.400">{props.children}</ChakraLink>
+      </a>
     );
   },
 };
@@ -99,12 +104,12 @@ const PostLayout = ({ post }) => {
   return (
     <>
       <Box
-        height="100vh"
+        height="auto"
         width="100%"
         bg={bgColor[colorMode]}
         color={fgColor[colorMode]}
         backgroundSize="cover"
-        mb={-5}
+        pb={5}
       >
         <Box
           width="85%"
@@ -122,7 +127,11 @@ const PostLayout = ({ post }) => {
             {post.updatedAt}
           </Text>
           <Divider mb={3} />
-          <ReactMarkdown renderers={renderers} source={post.content.markdown} />
+          <ReactMarkdown
+            renderers={renderers}
+            source={post.content.markdown}
+            escapeHtml={false}
+          />
           {
             //  use https://github.com/aknuds1/html-to-react#setup
           }

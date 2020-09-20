@@ -25,7 +25,8 @@ const BlogPost = (props) => {
     <Box mb={12} key={props.title}>
       <Button variant="ghost" px={0} mb={2}>
         <Heading as="h3" fontSize="28px">
-          <Link href="/blog/[slug]" as={`/blog/${props.slug}`} passHref>
+          <Link href="/blog/[slug]" as={`/blog/${props.slug}`}>
+            {/* prefetch only works with static pages */}
             <ChakraLink color={[linkFG[colorMode]]}>{props.title}</ChakraLink>
           </Link>
         </Heading>
@@ -54,7 +55,7 @@ const Blog = ({ posts }) => {
   const { colorMode } = useColorMode();
   return (
     <Box
-      height="100vh"
+      height="auto"
       width="100%"
       bg={bgColor[colorMode]}
       color={fgColor[colorMode]}
@@ -70,7 +71,6 @@ const Blog = ({ posts }) => {
         mx="auto"
       >
         <Heading as="h1">Posts</Heading>
-
         <Divider mb={5} />
         {posts.map((post) => (
           <BlogPost
@@ -80,6 +80,7 @@ const Blog = ({ posts }) => {
             slug={post.slug}
             tags={post.tags}
             reads={post.reads}
+            updatedAt={post.updatedAt}
             {...post}
           />
         ))}
