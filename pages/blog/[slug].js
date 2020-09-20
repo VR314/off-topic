@@ -26,6 +26,7 @@ export async function getServerSideProps(context) {
         content {
           markdown
         }
+        updatedAt
       }
     }
     `,
@@ -100,6 +101,7 @@ const PostLayout = ({ post }) => {
   const { colorMode } = useColorMode();
   const bgColor = { light: 'white', dark: 'gray.800' };
   const fgColor = { light: 'black', dark: 'white' };
+  const updatedDate = new Date(Date.parse(post.updatedAt));
 
   return (
     <>
@@ -123,9 +125,10 @@ const PostLayout = ({ post }) => {
           <Heading as="h1" size="2xl" mb={2}>
             {post.title}
           </Heading>
-          <Text fontSize="1rem" mb={2}>
-            {post.updatedAt}
-          </Text>
+          <Heading as="h4" size="sm">
+            {/* TODO: add link to author page */}
+            <i>{post.author.name}</i> {`  —  ${updatedDate.toDateString()}`}
+          </Heading>
           <Divider mb={3} />
           <ReactMarkdown
             renderers={renderers}

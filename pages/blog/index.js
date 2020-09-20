@@ -37,8 +37,10 @@ const BlogPost = (props) => {
         <i>
           {Math.floor(
             (new Date() - Date.parse(props.updatedAt)) / 1000 / 60 / 60 / 24
-          )}{' '}
-          days ago
+          )}
+          {/* Add today, yesterday, etc. -- maybe add more complexity (one month ago, etc. 
+            and make an api function) */}
+          {' days ago'}
         </i>
       </Text>
 

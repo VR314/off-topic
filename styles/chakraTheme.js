@@ -24,7 +24,7 @@ const customTheme = {
   },
   fontSizes: {
     xs: '12px',
-    sm: '16px',
+    sm: '14px',
     md: '20px',
     lg: '24px',
     xl: '28px',
